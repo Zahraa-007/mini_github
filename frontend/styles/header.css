@@ -1,3 +1,6 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap");
+
 .header {
   background-color: var(--primary-color);
   padding: 1rem;
@@ -8,6 +11,7 @@
 
 
 .header h2 {
+  font-family: "Orbitron", sans-serif;
   color: var(--text-color);
   margin-left: 0.4rem;
   text-shadow: 0 4px 6px rgba(255, 255, 255, 0.329);

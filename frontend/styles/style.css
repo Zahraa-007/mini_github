@@ -2,6 +2,7 @@
 @import url("header.css");
 @import url("footer.css");
 @import url("indexPageStyle.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +28,7 @@
 }
 */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   background:-webkit-linear-gradient(var(--primary-color), var(--secondary-color));
   color: var(--text-color);
   line-height: 1.6;
@@ -41,5 +42,3 @@ body {
   padding: 0.5rem 1rem;
   box-shadow: 0 4px 6px var(--shadow-color);
 }
-
-
