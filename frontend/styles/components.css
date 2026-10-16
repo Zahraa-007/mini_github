@@ -1,0 +1,25 @@
+.card {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.navbar{
+  display: flex;
+  gap: 1rem;
+}
+.navbar a:hover{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.05);
+}

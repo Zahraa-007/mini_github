@@ -1,0 +1,52 @@
+.main{
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+.main h2 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 6px rgba(255, 255, 255, 0.329);
+}
+
+.intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;  
+}
+
+.register {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.register h2{
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 6px rgba(255, 255, 255, 0.159);
+  text-decoration: double underline;
+}
+
+.register p{
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 6px rgba(255, 255, 255, 0.159);
+  text-align: center;
+}
+
+.register .register-buttons a:hover{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.289);
+  transition: all 0.3s ease-in-out;
+  transform: scale(2);
+} 
