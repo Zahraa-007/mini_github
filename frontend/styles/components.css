@@ -12,14 +12,12 @@
   justify-content: center;
   align-items: center;
 }
-.navbar{
-  display: flex;
-  gap: 1rem;
-}
-.navbar a:hover{
-  background-color: var(--primary-color);
+
+.primary-button {
   color: var(--text-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--text-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
   box-shadow: 0 4px 6px var(--shadow-color);
-  transition: all 0.3s ease-in-out;
-  transform: scale(1.05);
 }

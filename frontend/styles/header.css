@@ -22,3 +22,16 @@
   border-radius: 50%;
   box-shadow: 1px 0px 0px 0px var(--secondary-color);
 }
+
+.navbar{
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar a:hover{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.05);
+}
