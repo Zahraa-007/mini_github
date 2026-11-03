@@ -3,5 +3,10 @@
   color: var(--text-color);
   text-align: center;
   padding: 1rem;
-  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }

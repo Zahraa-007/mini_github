@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mini GitHub</title>
 
-    <link rel="stylesheet" href="styles/style.css"/>
-    <link rel="stylesheet" href="styles/header.css"/>
-    <link rel="stylesheet" href="styles/footer.css"/>
-    <link rel="stylesheet" href="styles/components.css"/>
-    <link rel="stylesheet" href="styles/index.css"/>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
   <body>
     <div class="header">
@@ -24,42 +24,84 @@
       </div>
     </div>
 
-    <div class="main">
-      <div class="intro">
-        <h2>Welcome to Mini GitHub</h2>
-        <p>This is a simplified version of GitHub for learning purposes.</p>
-      </div>
-      <div class="register">
+    <main class="main">
+      <div class="card">
+      <section class="content">
+        <h1>Welcome to Mini GitHub</h1>
         <p>
-          Ready to dive in? Create an account and start exploring the world of
-          Mini GitHub!
+          This is a mini version of GitHub, where you can manage your
+          repositories and collaborate with others.
         </p>
-        <div class="register-buttons">
-          <a href="register/signup.html" class="primary-button">Sign Up</a>
-          <a href="register/login.html" class="primary-button">Log In</a>
+        <a href="register/signup.html" class="secondary-button"> Get Started </a>
+      </section>
+      </div>
+      <div class="feature-orbit">
+        <svg
+          class="orbit-lines"
+          viewBox="0 0 560 380"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M 220 145 Q 155 90 100 90" />
+          <path d="M 220 235 Q 155 290 100 290" />
+
+          <path d="M 340 145 Q 405 90 460 90" />
+        </svg>
+
+        <div class="central-circle">
+          <span>&lt;/&gt;</span>
         </div>
+
+        <div class="feature-item left top">
+          <button class="feature-bubble" aria-label="Repositories">
+            <i class="feature-icon">
+              <img src="assets/storage.png" alt="Repositories Icon" />
+            </i>
+          </button>
+
+          <div class="bubble-card">
+            <h3>Repositories</h3>
+            <p>
+              Create and manage your projects and keep your source code
+              organized.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-item left bottom">
+          <button class="feature-bubble" aria-label="ideas">
+            <i class="feature-icon">
+              <img src="assets/idea.png" alt="Ideas Icon" />
+            </i>
+          </button>
+
+          <div class="bubble-card">
+            <h3>Save your ideas&work process</h3>
+            <p>
+              Keep track of your ideas and the development process for each
+              project.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-item right top">
+          <button class="feature-bubble" aria-label="Branches">
+            <i class="feature-icon">
+              <img src="assets/branch.png" alt="Branches Icon" />
+            </i>
+          </button>
+
+          <div class="bubble-card">
+            <h3>Branches</h3>
+            <p>
+              Develop new features independently without affecting the main
+              branch.
+            </p>
+          </div>
+        </div>
+
       </div>
-      <div class="card">
-        <h2>What capabilities does Mini GitHub offer?</h2>
-        <p>
-          Mini GitHub provides a simplified interface for managing code
-          repositories, collaborating with others, and tracking issues.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>How to use Mini GitHub?</h2>
-        <p>
-          To get started, create an account, set up your repositories, and start
-          working on your projects,tarcking your progress. You can also explore
-          other users' repositories and contribute to open-source projects.
-        </p>
-      </div>
-
-
-    </div>
-
-    <div class="footer"><!--no footer class!!!-->
+    </main>
+    <div class="footer">
       <p>&copy; 2026 Mini GitHub. All rights reserved.</p>
     </div>
   </body>
