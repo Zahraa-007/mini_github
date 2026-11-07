@@ -1,0 +1,41 @@
+.admin-login-card {
+  text-align: center;
+  border-top: 4px solid var(--secondary-color);
+}
+
+.admin-icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 0.9rem;
+  color: #2a2222;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--shadow-color);
+}
+
+.admin-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.admin-tag {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 0.5rem;
+  padding: 0.1rem 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--secondary-color);
+  border-radius: 999px;
+}
+
+.admin-login-card .form-group {
+  text-align: left;
+}
+
+.admin-show {
+  margin-bottom: 1.25rem;
+}
