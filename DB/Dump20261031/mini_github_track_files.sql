@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `mini_github` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `mini_github`;
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mini_github
@@ -25,7 +27,7 @@ DROP TABLE IF EXISTS `track_files`;
 CREATE TABLE `track_files` (
   `_project_name` varchar(150) DEFAULT NULL,
   `_file_name` varchar(150) DEFAULT NULL,
-  `_file_content` text,
+  `_file_content` longtext,
   `_comment` varchar(255) DEFAULT NULL,
   `_update_date` datetime DEFAULT NULL,
   KEY `track_files_ibfk_1` (`_file_name`),
@@ -41,7 +43,6 @@ CREATE TABLE `track_files` (
 
 LOCK TABLES `track_files` WRITE;
 /*!40000 ALTER TABLE `track_files` DISABLE KEYS */;
-INSERT INTO `track_files` VALUES ('testProject','Main.java','public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"this is the first test file !\");\n    }\n}','first file','2026-10-31 12:29:12'),('testProject','Main.java','public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"this is the second test file !\");\n    }\n}','first file but second update','2026-11-01 10:50:30'),('testProject','Main.java','public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"this is the third test file !\");\n    }\n}','first file but third update','2026-11-01 11:50:30');
 /*!40000 ALTER TABLE `track_files` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-31 12:31:01
+-- Dump completed on 2026-11-07 15:29:43
