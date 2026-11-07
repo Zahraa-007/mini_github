@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>How to Log In | Mini GitHub</title>
+
+    <link rel="stylesheet" href="../styles/style.css"/>
+    <link rel="stylesheet" href="../styles/header.css"/>
+    <link rel="stylesheet" href="../styles/footer.css"/>
+    <link rel="stylesheet" href="../styles/components.css"/>
+    <link rel="stylesheet" href="../styles/register.css"/>
+    <link rel="stylesheet" href="../styles/role_choice.css"/>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Mini GitHub Logo"/>
+        <h2>Mini GitHub</h2>
+      </div>
+      <div class="navbar">
+        <a href="../pages/home.html" class="primary-button">Home</a>
+        <a href="../pages/about.html" class="primary-button">About</a>
+        <a href="../pages/setting.html" class="primary-button">Settings</a>
+      </div>
+    </div>
+
+    <div class="main auth">
+      <div class="card role-wrap">
+        <h2>How would you like to log in?</h2>
+
+        <div class="role-grid">
+          <a href="login.html" class="role-card">
+            <span class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+              </svg>
+            </span>
+            <h3>User</h3>
+            <p>Manage your repositories and projects.</p>
+          </a>
+
+          <a href="../admin/login.html" class="role-card">
+            <span class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </span>
+            <h3>Admin</h3>
+            <p>Manage users and the database.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2026 Mini GitHub. All rights reserved.</p>
+    </div>
+  </body>
+</html>
