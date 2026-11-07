@@ -1,70 +1,72 @@
 <?php
-
 require_once __DIR__ . "/../core/init.php";
 
 requirePost();
-
 $data = getInput();
 
-$name = trim($data["_username"] ?? "");
-$email = strtolower(trim($data["_email"] ?? ""));
-$password = $data["_password"] ?? "";
+$username = trim($data["username"] ?? "");
+$email = strtolower(trim($data["email"] ?? ""));
+$password = $data["password"] ?? "";
+$confirmPassword = $data["confirmPassword"] ?? "";
+$terms = $data["terms"] ?? false;
 
-if ($name === "" || $email === "" || $password === "") {
+if ($username === "" || $email === "" || $password === "") {
     response(400, "All fields are required");
 }
 
-if (strlen($name) > 100) {
-    response(400, "Name is too long");
+if (!preg_match('/^[A-Za-z0-9_-]{3,20}$/', $username)) {
+    response(400, "Invalid username");
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     response(400, "Invalid email address");
 }
 
-if (strlen($password) < 8) {
-    response(400, "Password must be at least 8 characters");
+if (strlen($password) < 8 || strlen($password) > 72) {
+    response(400, "Password must be between 8 and 72 bytes");
 }
 
-if (strlen($password) > 72) {
-    response(400, "Password is too long");
+if ($password !== $confirmPassword) {
+    response(400, "Passwords do not match");
 }
 
-$stmt = $conn->prepare(
-    "SELECT _username FROM users WHERE _email = :email"
+if ($terms !== true) {
+    response(400, "You must accept the terms");
+}
+
+
+  $stmt = $conn->prepare(
+    "SELECT _username FROM users WHERE _username = :username OR _email = :email"
 );
 
+
 $stmt->execute([
+    ":username" => $username,
     ":email" => $email
 ]);
 
 if ($stmt->fetch()) {
-    response(409, "Email already exists");
+    response(409, "Username or email already exists");
 }
 
-$hashedPassword = password_hash(
-    $password,
-    PASSWORD_DEFAULT
-);
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 $stmt = $conn->prepare(
-    "INSERT INTO users (name, email, password)
-     VALUES (:name, :email, :password)"
+    "INSERT INTO users (_username, _email, _password)
+     VALUES (:username, :email, :password)"
 );
 
 $stmt->execute([
-    ":name" => $name,
+    ":username" => $username,
     ":email" => $email,
     ":password" => $hashedPassword
 ]);
 
-// $userId = $conn->lastInsertId();
 
 session_regenerate_id(true);
 
 $_SESSION["user"] = [
-    // "id" => $userId,
-    "name" => $name,
+    "username" => $username,
     "email" => $email
 ];
 

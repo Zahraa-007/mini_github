@@ -116,7 +116,7 @@
     height: 100%;
     border-radius: 50%;
     border: 1px solid var(--shadow-color);
-    background: linear-gradient(135deg, var(--primary-color), #d000a8);
+    background: linear-gradient(135deg, var(--primary-color), #e468cc);
     color: var(--text-color);
     cursor: pointer;
     font-family: inherit;
