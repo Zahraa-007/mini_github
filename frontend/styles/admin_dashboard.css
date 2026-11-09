@@ -1,0 +1,312 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 20px;
+  border: 1px solid #ead0d0;
+  border-radius: 10px;
+  background: var(--secondary-color);
+  color: var(--text-color-color);
+  box-shadow: var(--shadow-color-color);
+  font: inherit;
+  font-size: 17px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+.button:hover {
+  background: var(--field);
+  transform: translateY(-1px);
+}
+
+.page-content {
+  width: 100%;
+  flex: 1;
+  padding: 70px 5vw 55px;
+}
+
+.dashboard {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.table-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 0 auto 38px;
+}
+
+.tab {
+  min-height: 92px;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--primary-color);
+  color: var(--text-color);
+  font-size: clamp(23px, 2vw, 30px);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: var(--shadow-color);
+  transition: background .18s ease;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  background: #484344;
+}
+
+.tab.active {
+  outline: 2px solid rgba(255, 255, 255, .13);
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.table-panel,
+.form-panel {
+  min-width: 0;
+  padding: 22px;
+  border-radius: 10px;
+  background: var(--primary-color);
+  box-shadow: var(--shadow-color);
+}
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.panel-heading h2,
+.form-panel h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.count {
+  font-size: 13px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: 14px 13px;
+  border-bottom: 1px solid #625455;
+}
+
+th {
+  color: #e6caca;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+td {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, .045);
+}
+
+
+
+.forms-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.form-panel h2 {
+  margin-bottom: 18px;
+}
+
+form {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+form > label:not(.checkbox-label) {
+  display: flex;
+  flex: 1 1 170px;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 10px;
+  outline: none;
+  background: var(--field);
+  color: var(--text-color);
+  font: inherit;
+  font-weight: 400;
+}
+
+input::placeholder {
+  color: #b5a8a8;
+}
+
+input:focus {
+  border-color: #f0d2d2;
+  box-shadow: 0 0 0 3px rgba(215, 170, 170, .18);
+}
+
+.checkbox-label {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 4px;
+  font-size: 15px;
+}
+
+.checkbox-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--secondary-colo);
+}
+
+.submit-button {
+  min-width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.delete-panel form {
+  align-items: end;
+}
+
+@media (max-width: 900px) {
+  .page-content {
+    padding: 45px 4vw;
+  }
+
+  .tables-grid,
+  .forms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-tabs {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    min-height: 76px;
+    padding: 12px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .actions .button {
+    min-height: 42px;
+    padding: 0 13px;
+    font-size: 14px;
+  }
+
+  .brand {
+    gap: 6px;
+    font-size: 18px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .tab {
+    min-height: 68px;
+    font-size: 21px;
+  }
+
+  .table-panel,
+  .form-panel {
+    padding: 16px;
+  }
+
+  form {
+    align-items: stretch;
+  }
+
+  form > label:not(.checkbox-label) {
+    flex-basis: 100%;
+  }
+
+  .submit-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .footer {
+    font-size: 14px;
+  }
+}
+
+/* Top Add/Delete controls */
+
+.form-panel[hidden] {
+  display: none !important;
+}
