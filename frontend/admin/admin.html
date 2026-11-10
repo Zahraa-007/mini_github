@@ -1,148 +1,178 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin | Mini GitHub</title>
 
-    <link rel="stylesheet" href="../styles/style.css"/>
-    <link rel="stylesheet" href="../styles/header.css"/>
-    <link rel="stylesheet" href="../styles/footer.css"/>
-    <link rel="stylesheet" href="../styles/components.css"/>
-    <link rel="stylesheet" href="../styles/register.css"/>
-    <link rel="stylesheet" href="../styles/admin_dashboard.css"/>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="stylesheet" href="../styles/register.css" />
+    <link rel="stylesheet" href="../styles/admin_dashboard.css" />
   </head>
   <body>
     <div class="header">
-        <div class="navbar">
-          <button class="secondary-button mode-button active" type="button" data-mode="add" aria-pressed="true">Add</button>
-      <button class="secondary-button mode-button" type="button" data-mode="delete" aria-pressed="false">Delete</button>
+      <div class="navbar">
+        <button
+          class="secondary-button mode-button active"
+          type="button"
+          data-mode="add"
+          aria-pressed="true"
+        >
+          Add
+        </button>
+        <button
+          class="secondary-button mode-button"
+          type="button"
+          data-mode="delete"
+          aria-pressed="false"
+        >
+          Delete
+        </button>
       </div>
       <div class="logo">
-        <img src="../assets/logo.png" alt="Mini GitHub Logo"/>
+        <img src="../assets/logo.png" alt="Mini GitHub Logo" />
         <h2>Mini GitHub</h2>
       </div>
     </div>
-  <main class="page-content">
-    <section class="dashboard" aria-labelledby="dashboard-title">
-      <h1 id="dashboard-title" class="visually-hidden">User administration</h1>
-    <div class="tables-grid">
-        <section class="table-panel" id="users-table">
-          <div class="panel-heading">
-            <h2>Users</h2>
-            <span class="count">3 accounts</span>
-          </div>
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
+    <main class="page-content">
+      <section class="dashboard" aria-labelledby="dashboard-title">
+        <h1 id="dashboard-title" class="visually-hidden">
+          User administration
+        </h1>
+        <div class="tables-grid">
+          <section class="table-panel" id="users-table">
+            <div class="panel-heading">
+              <h2>Users</h2>
+              <span class="count">3 accounts</span>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <th scope="col">Username</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Password</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>zahraa</td>
-                  <td>zahraa@gmail.com</td>
-                  <td>beepboop</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-        <section class="table-panel" id="admins-table">
-          <div class="panel-heading">
-            <h2>Admins</h2>
-            <span class="count">2 accounts</span>
-          </div>
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
+          <section class="table-panel" id="admins-table">
+            <div class="panel-heading">
+              <h2>Admins</h2>
+              <span class="count">2 accounts</span>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <th scope="col">Username</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Password</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>rosul</td>
-                  <td>sky@gmail.com</td>
-                  <td>Admin</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-      <div class="forms-grid">
-        <section class="form-panel" id="add-user" data-panel="add">
-          <h2>Add account</h2>
-          <form action="#" method="post">
-            <label>
-              Username
-              <input type="text" name="username" placeholder="Username" required>
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" placeholder="Email" required>
-            </label>
-            <label>
-              Password
-              <input type="password" name="password" placeholder="Password" required>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="is_admin">
-              <span>Admin</span>
-            </label>
-            <button class="button submit-button" type="submit">Add</button>
-          </form>
-        </section>
-        
-        <section class="form-panel delete-panel is-hidden" id="delete-user" data-panel="delete" hidden>
-          <h2>Delete account</h2>
-          <form action="#" method="post">
-            <label>
-              Username
-              <input type="text" name="delete_username" placeholder="Username" required>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="delete_admin">
-              <span>Admin</span>
-            </label>
-            <button class="button submit-button" type="submit">Delete</button>
-          </form>
-        </section>
-      </div>
-    </section>
-  </main>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <div class="forms-grid">
+          <section class="form-panel" id="add-user" data-panel="add">
+            <h2>Add account</h2>
+            <form action="#" method="post" id="add-account-form">
+              <label>
+                Username
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="Email" required />
+              </label>
+              <label>
+                Password
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="is_admin" />
+                <span>Admin</span>
+              </label>
+              <button class="button submit-button" type="submit">Add</button>
+            </form>
+          </section>
+
+          <section
+            class="form-panel delete-panel is-hidden"
+            id="delete-user"
+            data-panel="delete"
+            hidden
+          >
+            <h2>Delete account</h2>
+            <form action="#" method="post" id="delete-account-form">
+              <label>
+                Username
+                <input
+                  type="text"
+                  name="delete_username"
+                  placeholder="Username"
+                  required
+                />
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="delete_admin" />
+                <span>Admin</span>
+              </label>
+              <button class="button submit-button" type="submit">Delete</button>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
 
     <div class="footer">
       <p>&copy; 2026 Mini GitHub. All rights reserved.</p>
     </div>
-  <script>
-    const modeButtons = document.querySelectorAll(".mode-button");
-    const formPanels = document.querySelectorAll("[data-panel]");
+    <script>
+      const modeButtons = document.querySelectorAll(".mode-button");
+      const formPanels = document.querySelectorAll("[data-panel]");
 
-    modeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selectedMode = button.dataset.mode;
+      modeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const selectedMode = button.dataset.mode;
 
-        modeButtons.forEach((item) => {
-          const isActive = item === button;
-          item.classList.toggle("active", isActive);
-          item.setAttribute("aria-pressed", String(isActive));
-        });
+          modeButtons.forEach((item) => {
+            const isActive = item === button;
+            item.classList.toggle("active", isActive);
+            item.setAttribute("aria-pressed", String(isActive));
+          });
 
-        formPanels.forEach((panel) => {
-          const shouldShow = panel.dataset.panel === selectedMode;
-          panel.hidden = !shouldShow;
-          panel.classList.toggle("is-hidden", !shouldShow);
+          formPanels.forEach((panel) => {
+            const shouldShow = panel.dataset.panel === selectedMode;
+            panel.hidden = !shouldShow;
+            panel.classList.toggle("is-hidden", !shouldShow);
+          });
         });
       });
-    });
-  </script>
+    </script>
   </body>
 </html>
