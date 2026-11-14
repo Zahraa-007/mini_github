@@ -1,3 +1,4 @@
+
 <?php
 require_once __DIR__ . "/../core/init.php";
 
@@ -14,7 +15,6 @@ $data = getInput();
 $action = $data["action"] ?? "";
 
 if ($action === "add") {
-
     $username = trim($data["username"] ?? "");
     $email = trim($data["email"] ?? "");
     $password = $data["password"] ?? "";
@@ -32,57 +32,56 @@ if ($action === "add") {
         response(400, "Password must be at least 8 characters");
     }
 
-    $check = $conn->prepare(
-        "SELECT COUNT(*) FROM users
-         WHERE _username = :username OR _email = :email"
-    );
+    $tables = ["users", "admins"];
 
-    $check->execute([
-        ":username" => $username,
-        ":email" => $email
-    ]);
+    foreach ($tables as $table) {
+        $check = $conn->prepare(
+            "SELECT COUNT(*) FROM $table
+             WHERE _username = :username OR _email = :email"
+        );
 
-    if ($check->fetchColumn() > 0) {
-        response(409, "Username or email already exists");
+        $check->execute([
+            ":username" => $username,
+            ":email" => $email
+        ]);
+
+        if ($check->fetchColumn() > 0) {
+            response(409, "Username or email already exists");
+        }
     }
 
+    $table = $isAdmin ? "admins" : "users";
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $role = $isAdmin ? "admin" : "user";
 
     $stmt = $conn->prepare(
-        "INSERT INTO users (_username, _email, _password, _role)
-         VALUES (:username, :email, :password, :role)"
+        "INSERT INTO $table (_username, _email, _password)
+         VALUES (:username, :email, :password)"
     );
 
     $stmt->execute([
         ":username" => $username,
         ":email" => $email,
-        ":password" => $hashedPassword,
-        ":role" => $role
+        ":password" => $hashedPassword
     ]);
 
     response(201, "Account added successfully");
 }
 
 if ($action === "delete") {
-
     $username = trim($data["username"] ?? "");
-    $role = ($data["is_admin"] ?? false) ? "admin" : "user";
+    $isAdmin = !empty($data["is_admin"]);
 
     if ($username === "") {
         response(400, "Username is required");
     }
 
-    if (
-        $role === "admin" &&
-        $username === $_SESSION["user"]["username"]
-    ) {
-        response(400, "You cannot delete your own account");
-    }
+    if ($isAdmin) {
+        if ($username === $_SESSION["user"]["username"]) {
+            response(400, "You cannot delete your own account");
+        }
 
-    if ($role === "admin") {
         $count = $conn->query(
-            "SELECT COUNT(*) FROM users WHERE _role = 'admin'"
+            "SELECT COUNT(*) FROM admins"
         )->fetchColumn();
 
         if ($count <= 1) {
@@ -90,14 +89,14 @@ if ($action === "delete") {
         }
     }
 
+    $table = $isAdmin ? "admins" : "users";
+
     $stmt = $conn->prepare(
-        "DELETE FROM users
-         WHERE _username = :username AND _role = :role"
+        "DELETE FROM $table WHERE _username = :username"
     );
 
     $stmt->execute([
-        ":username" => $username,
-        ":role" => $role
+        ":username" => $username
     ]);
 
     if ($stmt->rowCount() === 0) {

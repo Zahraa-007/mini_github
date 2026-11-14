@@ -14,7 +14,16 @@ async function apiRequest(endpoint, method = "GET", data = null) {
   }
 
   const response = await fetch(`${API}/${endpoint}`, options);
-  const result = await response.json();
+  const text = await response.text();
+
+  let result;
+
+  try {
+    result = JSON.parse(text);
+  } catch {
+    console.error("Server returned non-JSON response:", text);
+    throw new Error("Server returned an invalid response. Check PHP errors.");
+  }
 
   if (!response.ok) {
     throw new Error(result.message || "Something went wrong");
@@ -64,53 +73,61 @@ if (usersTable && adminsTable) {
   const addForm = document.getElementById("add-account-form");
   const deleteForm = document.getElementById("delete-account-form");
 
-  async function loadAccounts() {
-    try {
-      const result = await apiRequest("admin_users.php");
+  
+async function loadAccounts() {
+  try {
+    const result = await apiRequest("admin_users.php");
 
-      const users = result.data.users;
-      const admins = result.data.admins;
+    const users = result.data?.users ?? [];
+    const admins = result.data?.admins ?? [];
 
-      usersTable.innerHTML = "";
-      adminsTable.innerHTML = "";
+    usersTable.innerHTML = "";
+    adminsTable.innerHTML = "";
 
-      users.forEach((user) => {
+    function renderAccounts(accounts, table) {
+      if (accounts.length === 0) {
         const row = document.createElement("tr");
+        const cell = document.createElement("td");
 
-        [user.username, user.email].forEach((value) => {
-          const td = document.createElement("td");
-          td.textContent = value;
-          row.appendChild(td);
-        });
+        cell.colSpan = 2;
+        cell.textContent = "No accounts found";
 
-        usersTable.appendChild(row);
-      });
-
-      admins.forEach((admin) => {
-        const row = document.createElement("tr");
-
-        [admin.username, admin.email].forEach((value) => {
-          const td = document.createElement("td");
-          td.textContent = value;
-          row.appendChild(td);
-        });
-
-        adminsTable.appendChild(row);
-      });
-
-      document.querySelector("#users-table .count").textContent =
-        `${users.length} accounts`;
-
-      document.querySelector("#admins-table .count").textContent =
-        `${admins.length} accounts`;
-    } catch (error) {
-      alert(error.message);
-
-      if (error.message.includes("Admin access required")) {
-        window.location.href = "admin.html";
+        row.appendChild(cell);
+        table.appendChild(row);
+        return;
       }
+
+      accounts.forEach((account) => {
+        const row = document.createElement("tr");
+
+        [account.username, account.email].forEach((value) => {
+          const cell = document.createElement("td");
+          cell.textContent = value ?? "";
+          row.appendChild(cell);
+        });
+
+        table.appendChild(row);
+      });
+    }
+
+    renderAccounts(users, usersTable);
+    renderAccounts(admins, adminsTable);
+
+    document.querySelector("#users-table .count").textContent =
+      `${users.length} accounts`;
+
+    document.querySelector("#admins-table .count").textContent =
+      `${admins.length} accounts`;
+  } catch (error) {
+    console.error("Loading accounts failed:", error);
+    alert(error.message);
+
+    if (error.message.includes("Admin access required")) {
+      window.location.href = "admin.html";
     }
   }
+}
+
 
   addForm.addEventListener("submit", async (e) => {
     e.preventDefault();

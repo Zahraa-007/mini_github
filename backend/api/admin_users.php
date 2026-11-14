@@ -1,3 +1,4 @@
+
 <?php
 require_once __DIR__ . "/../core/init.php";
 
@@ -12,30 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] !== "GET") {
     response(405, "Method not allowed");
 }
 
-$stmt = $conn->query(
-    "SELECT _username, _email, _role
+$usersStmt = $conn->query(
+    "SELECT _username AS username, _email AS email
      FROM users
      ORDER BY _username ASC"
 );
 
-$users = $stmt->fetchAll();
+$adminsStmt = $conn->query(
+    "SELECT _username AS username, _email AS email
+     FROM admins
+     ORDER BY _username ASC"
+);
 
-$response = [
-    "users" => [],
-    "admins" => []
-];
-
-foreach ($users as $user) {
-    $account = [
-        "username" => $user["_username"],
-        "email" => $user["_email"]
-    ];
-
-    if ($user["_role"] === "admin") {
-        $response["admins"][] = $account;
-    } else {
-        $response["users"][] = $account;
-    }
-}
-
-response(200, "Accounts loaded successfully", $response);
+response(200, "Accounts loaded successfully", [
+    "users" => $usersStmt->fetchAll(PDO::FETCH_ASSOC),
+    "admins" => $adminsStmt->fetchAll(PDO::FETCH_ASSOC)
+]);

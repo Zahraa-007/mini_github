@@ -12,8 +12,8 @@ if ($usernameOrEmail === "" || $password === "") {
 }
 
 $stmt = $conn->prepare(
-    "SELECT _username, _email, _password, _role
-     FROM users
+    "SELECT _username, _email, _password
+     FROM admins
      WHERE _username = :username OR _email = :email
      LIMIT 1"
 );
@@ -25,12 +25,8 @@ $stmt->execute([
 
 $user = $stmt->fetch();
 
-if (!$user || !password_verify($password, $user["_password"])) {
+if (!$user || $password !== $user["_password"]) {
     response(401, "Invalid username or password");
-}
-
-if ($user["_role"] !== "admin") {
-    response(403, "Access denied. Admins only");
 }
 
 session_regenerate_id(true);
